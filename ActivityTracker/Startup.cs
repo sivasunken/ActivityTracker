@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ActivityTracker
 {
@@ -27,6 +28,11 @@ namespace ActivityTracker
             services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("Activity"));
 
             services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Activity Tracker API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +50,14 @@ namespace ActivityTracker
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Activity Tracker API V1");
+            });
+
 
             app.UseStaticFiles();
 
