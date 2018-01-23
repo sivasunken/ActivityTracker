@@ -1,24 +1,24 @@
-<h1>Weather forecast</h1>
+<h1>Activity Subscription</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p *ngIf="!activityList"><em>Loading...</em></p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
-
-<table class='table' *ngIf="forecasts">
+<table class='table' *ngIf="activityList">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Comments</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.dateFormatted }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+        <tr *ngFor="let activity of activityList">
+            <td>{{ activity.firstName }}</td>
+            <td>{{ activity.lastName }}</td>
+            <td>{{ activity.email }}</td>
+            <td>{{ activity.activityName }}</td>
+            <td>{{ activity.comments }}</td>
         </tr>
     </tbody>
 </table>
