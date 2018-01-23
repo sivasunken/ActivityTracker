@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { ActivityModel } from '../models/activity.model';
 import { ActivityService } from '../services/activity.service';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 
 @Component({
@@ -12,13 +11,11 @@ export class HomeComponent {
     activity: ActivityModel = new ActivityModel();
 
     constructor(
-        private activityService: ActivityService,
-        private toastr: ToastsManager
+        private activityService: ActivityService
     ) {
-
     }
 
     onSubmit() {
-        this.toastr.success("Activity Subscription Submitted", "Insert Activity");
+        
     }
 }
