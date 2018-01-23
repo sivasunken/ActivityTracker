@@ -6,31 +6,31 @@
         <div class="col-sm-6 mb-3">
             <label for="firstName">First name</label>
             <input type="text" class="form-control" id="firstName">
-            <div class="invalid-feedback">
+            <alert type="danger" class="invalid-feedback">
                 Valid first name is required.
-            </div>
+            </alert>
         </div>
         <div class="col-sm-6 mb-3">
             <label for="lastName">Last name</label>
             <input type="text" class="form-control" id="lastName">
-            <div class="invalid-feedback">
+            <alert type="danger" class="invalid-feedback">
                 Valid last name is required.
-            </div>
+            </alert>
         </div>
     </div>
     <div class="mb-3">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" placeholder="you@example.com">
-        <div class="invalid-feedback">
+        <alert type="danger" class="invalid-feedback">
             Please enter a valid email address for shipping updates.
-        </div>
+        </alert>
     </div>
     <div class="mb-3">
         <label for="activity">Activity</label>
         <input type="text" class="form-control" id="activity">
-        <div class="invalid-feedback">
+        <alert type="danger" class="invalid-feedback">
             Please enter an Activity.
-        </div>
+        </alert>
     </div>
     <div class="mb-3">
         <label for="comment">Comments</label>
@@ -38,4 +38,6 @@
     </div>
     <hr />
     <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="onSubmit()">Submit</button>
+    <alert type="success" [dismissible]="true">{{successMsg}}</alert>
+    <alert type="danger" [dismissible]="true">{{errorMsg}}</alert>
 </div>
