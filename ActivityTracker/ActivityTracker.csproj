@@ -28,10 +28,12 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\activity.model.ts" />
+    <None Remove="ClientApp\app\components\shared\email-validator.directive.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\models\activity.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\shared\email-validator.directive.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

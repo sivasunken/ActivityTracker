@@ -3,6 +3,6 @@
     firstName: string;
     lastName: string;
     email: string;
-    activity: string;
+    activityName: string;
     comments: string;
 }

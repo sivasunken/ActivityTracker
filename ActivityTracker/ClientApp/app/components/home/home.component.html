@@ -2,42 +2,43 @@
     <div class="row">
         <h4 class="mb-3">Subscribe Activity</h4>
     </div>
-    <div class="row">
-        <div class="col-sm-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName">
-            <alert type="danger" class="invalid-feedback">
-                Valid first name is required.
+    <form #activityForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"  [(ngModel)]="activity.firstName" #firstname="ngModel" required>
+                <alert type="danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                    Valid first name is required.
+                </alert>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="activity.lastName" #lastName="ngModel" required>
+                <alert type="danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    Valid last name is required.
+                </alert>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" [(ngModel)]="activity.email" #email="ngModel" required emailValidator>
+            <alert type="danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                Please enter a valid email address.
             </alert>
         </div>
-        <div class="col-sm-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName">
-            <alert type="danger" class="invalid-feedback">
-                Valid last name is required.
+        <div class="mb-3">
+            <label for="activityName">Activity</label>
+            <input type="text" class="form-control" id="activityName" name="activityName" [(ngModel)]="activity.activityName" #activityName="ngModel" required>
+            <alert type="danger" *ngIf="activityName.invalid && (activityName.dirty || activityName.touched)">
+                Please enter an Activity.
             </alert>
         </div>
-    </div>
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="you@example.com">
-        <alert type="danger" class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-        </alert>
-    </div>
-    <div class="mb-3">
-        <label for="activity">Activity</label>
-        <input type="text" class="form-control" id="activity">
-        <alert type="danger" class="invalid-feedback">
-            Please enter an Activity.
-        </alert>
-    </div>
-    <div class="mb-3">
-        <label for="comment">Comments</label>
-        <textarea class="form-control" id="comment" rows="3"></textarea>
-    </div>
-    <hr />
-    <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="onSubmit()">Submit</button>
-    <alert type="success" [dismissible]="true">{{successMsg}}</alert>
-    <alert type="danger" [dismissible]="true">{{errorMsg}}</alert>
+        <div class="mb-3">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3" [(ngModel)]="activity.comments" #comments="ngModel"></textarea>
+        </div>
+        <hr />
+        <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!activityForm.form.valid">Submit</button>
+        <alert [attr.type]="errorType" [dismissible]="true" *ngIf="msg">{{msg}}</alert>
+    </form>
 </div>

@@ -10,13 +10,15 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { ActivityService } from './components/services/activity.service';
+import { EmailValidatorDirective } from './components/shared/email-validator.directive';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        EmailValidatorDirective
     ],
     imports: [
         CommonModule,

@@ -21,7 +21,8 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
-    'ngx-bootstrap'
+    'ngx-bootstrap',
+    'email-validator'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
